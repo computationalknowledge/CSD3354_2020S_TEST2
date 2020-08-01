@@ -16,7 +16,7 @@ class ArrayPlayground
 {
     // Write a simple C# program that has an ARRAY and adds data of different types to that array.
     // write the code to iterate over the array.
-
+    object[] obj1 = new object[10];
     public void PackData()
     {
         // step 1. Create an ARRAY of type OBJECT (appicable to any data structure as Stack or Queue)
@@ -27,18 +27,24 @@ class ArrayPlayground
         // eg. int (a primitive) -> Int32 (object)
         // Step 2: We must use OBJECT CASTING as shown below!
 
-        object[] o = new object[10];
-
-        o[0] = (Object)(new String("Dog"));
-        o[1] = 1;
-        o[2] = true;
-        o[3] = (Object)(new DateTime());
-        o[4] = (Object)(new Student("Harpeet", 4.0f));
-        o[5] = (Object)(new ArrayPlayground());
-        o[6] = 1 == 2; // this is functionally equivalent to boolean false
+        obj1[0] = (Object)(new String("Dog"));
+        obj1[1] = 1;
+        obj1[2] = true;
+        obj1[3] = (Object)(new DateTime());
+        obj1[4] = (Object)(new Student("Harpeet", 4.0f));
+        obj1[5] = (Object)(new ArrayPlayground());
+        obj1[6] = 1 == 2; // this is functionally equivalent to boolean false
 
         // so we have done half the work: getting the data INTO THE ARRAY
         // Now the 2nd part of our JOB is to extract the Data back OUT:
+    }
+
+    public void UnPackData() {
+
+        foreach (var item in obj1)
+        {
+            Console.WriteLine(item.GetType());
+        }
     }
 
 
@@ -47,8 +53,8 @@ class Program
 {
     public static void Main()
     {
-        ArrayPlayground ap =  new ArrayPlayground()
-        ap.PackData();
-        ap.UnPackData();
+            ArrayPlayground ap = new ArrayPlayground();
+            ap.PackData();
+            ap.UnPackData();
     }
 }
